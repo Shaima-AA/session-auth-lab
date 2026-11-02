@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+   <%- include('./partials/navbar') %>
+    <h1>All entries</h1>
+<% for(let oneEntry of entries){ %>
+    <h2>Title: <%= oneEntry.title %></h2>
+    <p><%= oneEntry.entryBody %></p>
+
+    <% if (user._id == oneEntry.owner) { %>
+        <a href="/entries/<%= oneEntry._id %>/edit">Edit</a>
+        <form action="/entries/<%= oneEntry._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+    <% } %>
+    <% } %>
+
+
+</body>
+</html>
